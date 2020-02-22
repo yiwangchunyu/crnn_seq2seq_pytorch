@@ -8,8 +8,8 @@ This network architecture is implemented from [Robust Scene Text Recognition wit
 ![arch.jpg](https://github.com/bai-shang/crnn_seq2seq_ocr.Pytorch/blob/master/data/arch.jpg?)  
 
 
+***The original repository can be found here [bai-shang/crnn_seq2seq_ocr_pytorch](https://github.com/bai-shang/crnn_seq2seq_ocr_pytorch)***   
 ***The crnn+ctc ocr can be found here [bai-shang/crnn_ctc_ocr_tf](https://github.com/bai-shang/crnn_ctc_ocr_tf)***
-
 
 # Dependencies
 All dependencies should be installed are as follow:
@@ -50,21 +50,16 @@ predict_string: 于采取的是“激变”的 => predict_probility: 0.860094428
 
 * Create **train_list.txt** and **test_list.txt** as follow format
 ```
-path/to/your/image/50843500_2726670787.jpg 情笼罩在他们满是沧桑
-path/to/your/image/57724421_3902051606.jpg 心态的松弛决定了比赛
-path/to/your/image/52041437_3766953320.jpg 虾的鲜美自是不可待言
+50843500_2726670787.jpg 情笼罩在他们满是沧桑
+57724421_3902051606.jpg 心态的松弛决定了比赛
+52041437_3766953320.jpg 虾的鲜美自是不可待言
 ```
-You can use the "[data/convert_text_list.py](https://github.com/bai-shang/crnn_seq2seq_ocr_pytorch/blob/master/data/convert_text_list.py)" script to create the two lists or finish it by yourself.
-```
-cd data
-python3 convert_text_list.py SyntheticChineseStringDataset/train.txt > train_list.txt
-python3 convert_text_list.py SyntheticChineseStringDataset/test.txt > test_list.txt
-```
+
 
 * Start training
 ```
 #cd crnn_seq2seq_ocr.Pytorch
-python3 --train_list train_list.txt --eval_list test_list.txt --model ./model/crnn/ 
+python3 --train_list=train_list.txt --eval_list=test_list.txt --data_root=/data/SyntheticChineseStringDataset --model=./model/crnn/ 
 ``` 
 Then the training messages are printed to terminal like
 ![](https://github.com/bai-shang/crnn_seq2seq_ocr.Pytorch/blob/master/data/start_train.jpg?)

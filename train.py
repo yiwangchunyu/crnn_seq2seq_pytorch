@@ -17,6 +17,7 @@ import crnn.seq2seq as crnn
 cudnn.benchmark = True
 
 parser = argparse.ArgumentParser()
+parser.add_argument('--data_root', type=str, help='path to dataset root')
 parser.add_argument('--train_list', type=str, help='path to train dataset list file')
 parser.add_argument('--eval_list', type=str, help='path to evalation dataset list file')
 parser.add_argument('--num_workers', type=int, default=4, help='number of data loading num_workers')

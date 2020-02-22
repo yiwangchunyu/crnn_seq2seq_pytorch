@@ -1,3 +1,5 @@
+import os
+
 import torch
 import torchvision
 
@@ -9,8 +11,9 @@ import numpy as np
 
 class TextLineDataset(torch.utils.data.Dataset):
 
-    def __init__(self, text_line_file=None, transform=None, target_transform=None):
+    def __init__(self, data_root='', text_line_file=None, transform=None, target_transform=None):
         self.text_line_file = text_line_file
+        self.data_root=data_root
         with open(text_line_file) as fp:
             self.lines = fp.readlines()
             self.nSamples = len(self.lines)
@@ -25,7 +28,7 @@ class TextLineDataset(torch.utils.data.Dataset):
         assert index <= len(self), 'index range error'
 
         line_splits = self.lines[index].strip().split()
-        img_path = line_splits[0]
+        img_path = os.path.join(self.data_root,line_splits[0])
         try:
             if 'train' in self.text_line_file:
                 img = Image.open(img_path).convert('RGB')
